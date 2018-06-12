@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+var cors = require('cors')
 
 var routes = require('./routes/index');
 
@@ -34,7 +35,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
-app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -93,4 +94,5 @@ app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
 // });
 });
 
+app.use('/', routes);
 module.exports = app;
